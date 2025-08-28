@@ -1,0 +1,29 @@
+version: "3.8"
+
+networks:
+  nginx-net:
+    external: true
+
+services:
+  homeassistant:
+    # Povodne bolo: image: "ghcr.io/home-assistant/home-assistant:stable"
+    # directiva build vybuilduje image podla definicie v Dockerfile
+    build: .
+    container_name: homeassistant
+    restart: always
+    networks:
+      - nginx-net
+    ports:
+      - "8123:8123"   # voliteľné, iba ak chcete prístup priamo na HTTP v LAN
+    volumes:
+      - home-assistant-config:/config
+      - home-assistant-media:/media
+      - home-assistant-backups:/config/backups
+
+volumes:
+  home-assistant-config:
+    external: true
+  home-assistant-backups:
+    external: true
+  home-assistant-media:
+    external: true
