@@ -1,5 +1,4 @@
 version: "3.8"
-
 services:
   homeassistant:
     # Povodne bolo: image: "ghcr.io/home-assistant/home-assistant:stable"
@@ -13,7 +12,6 @@ services:
       - home-assistant-config:/config
       - home-assistant-media:/media
       - home-assistant-backups:/config/backups
-
 volumes:
   home-assistant-config:
     external: true
