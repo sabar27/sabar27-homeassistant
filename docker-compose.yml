@@ -1,4 +1,7 @@
 version: "3.8"
+networks:
+  nginx-net:
+    external: true
 services:
   homeassistant:
     # Povodne bolo: image: "ghcr.io/home-assistant/home-assistant:stable"
